@@ -32,12 +32,13 @@ a result.
 def funkom : {α β γ : Type} → (β → γ) → (α → β) → (α → γ)
 | α, β, γ, g, f => fun (a : α) => (g (f a))
 
+def funkom : {α β γ : Type} → (β → γ) → (α → β) → (α → γ)
+| α, β, γ, g, f => fun (a : α) => (g (f a))
+
 /-!
 We'll implement a function of this type using what
 we call top-down type-guided structured programming.
 -/
-
-
 
 /-!
 Here's the procedure we followed when going over the HW.
@@ -99,6 +100,8 @@ def op_right : {α β : Type} → α × β → β
 | p => match p with | (_, b) => b
 -- Hint: Use top-down structured programming
 
+def op_right {α β : Type} : α × β → β 
+| p => match p with | (_, b) => b
 
 
 /-! 
@@ -204,6 +207,9 @@ Define a function, *triple*, of the following type:
 -- Here:
 def triple : { α β γ : Type } → α → β → γ → (α × β × γ)  
 | α, β, γ, a, b, y => (a, (b, y)) -- Prod.mk a (Prod.mk b y)
+
+def triple : { α β γ : Type } → α → β → γ → (α × β × γ)
+| α, β, γ, a, b , y => (a,(b,y)) -- Prod.mk a (Prod.mk b y)
 
 -- Hints: (1) put in parens for clarity; (2) use TDSP.
 
